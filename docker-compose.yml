@@ -1,0 +1,17 @@
+# App Container
+web:
+  # Use the usdaeas/gov-drupal-dev image
+  # https://hub.docker.com/r/usdaeas/gov-drupal-dev/
+  image: usdaeas/gov-drupal-dev:php56
+  # container_name must be a unique value when running multiple containers
+  container_name: prod.wcmaas.usda.gov
+  hostname: prod.wcmaas.usda.gov
+  # Container variables
+  ports:
+    # Map Host machine's port to port 80 and 443
+    - "8054:80"
+    - "8454:443"
+  volumes:
+    # Sets current directory to public web directory
+    - ./public:/var/www/public
+  restart: always
